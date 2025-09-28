@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classificador de email</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="index.html">Home</a>
-            <a class="cabecalho__menu__link" href="contact.html">Contato</a>
+            <a class="cabecalho__menu__link" href="{{ url_for('home') }}">Home</a>
+            <a class="cabecalho__menu__link" href="{{ url_for('contact') }}">Contato</a>
         </nav>
     </header>
     <main class="apresentacao">
@@ -26,8 +26,8 @@
                 <br>
 
                 <form action="/upload" method="POST" enctype="multipart/form-data">
-                    <label for="file">Carregue o arquivo do email:</label>
-                    <input type="file" id="file" name="file">
+                    <label for="file">Carregue o arquivo do email:</label><br>
+                    <input type="file" id="file" name="file" accept=".pdf,.txt">
                     <br><br>
 
                     <label for="textContent">Ou cole o conteúdo do email abaixo:</label>

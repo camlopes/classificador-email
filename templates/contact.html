@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="index.html">Home</a>
-            <a class="cabecalho__menu__link" href="contact.html">Contato</a>
+            <a class="cabecalho__menu__link" href="{{ url_for('home') }}">Home</a>
+            <a class="cabecalho__menu__link" href="{{ url_for('contact') }}">Contato</a>
         </nav>
     </header>
     <main class="apresentacao">
@@ -25,16 +25,16 @@
             <div class="apresentacao__conteudo__links">
                 <h2 class="apresentacao__conteudo__links__subtitulo">Acesse minhas redes:</h2>
                 <a class="apresentacao__conteudo__links__botao" href="https://github.com/camlopes">
-                    <img src="./assets/Logo Github.png" alt="Imagem do logo do GitHub">
+                    <img src="{{ url_for('static', filename='assets/Logo Github.png') }}" alt="Imagem do logo do GitHub">
                     GitHub
                 </a>
                 <a class="apresentacao__conteudo__links__botao" href="https://www.linkedin.com/in/camila-lopes00/">
-                    <img src="./assets/Logo linkedin.png" alt="Imagem do logo do Linkedin">
+                    <img src="{{ url_for('static', filename='/assets/Logo linkedin.png') }}" alt="Imagem do logo do Linkedin">
                     Linkedin
                 </a>
             </div>
         </section>
-        <img class="apresentacao__imagem" src="./assets/Imagem-code.png" alt="Imagem de codigo em uma tela">
+        <img class="apresentacao__imagem" src="{{ url_for('static', filename='assets/Imagem-code.png') }}" alt="Imagem de codigo em uma tela">
     </main>
     <footer class="rodape">
         <p>Desenvolvido por Camila Lopes.</p>
