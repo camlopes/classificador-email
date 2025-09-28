@@ -34,4 +34,7 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
         console.error("Erro:", error);
         document.getElementById("resultado").innerHTML = "<br><p style='color:red;'>Ocorreu um erro ao enviar o email.</p>";
     });
+
+    document.getElementById("file").value = "";
+    document.getElementById("textContent").value = "";
 });
