@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador de email</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <nav class="cabecalho__menu">
+            <a class="cabecalho__menu__link" href="index.html">Home</a>
+            <a class="cabecalho__menu__link" href="contact.html">Contato</a>
+        </nav>
+    </header>
+    <main class="apresentacao">
+        <section class="apresentacao__conteudo">
+            <h1 class="apresentacao__conteudo__titulo">Classificador de emails</h1>
+            <div class="apresentacao__conteudo__texto">
+                <p>Esta pagina é uma aplicação web simples que utiliza inteligência
+                    artificial para:
+                    classificar um email em categorias predefinidas (Produtivo ou Improdutivo) e
+                    sugerir automaticamente uma resposta para o email baseado na classificação realizada.</p>
+                <br>
+
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <label for="file">Carregue o arquivo do email:</label>
+                    <input type="file" id="file" name="file">
+                    <br><br>
+
+                    <label for="textContent">Ou cole o conteúdo do email abaixo:</label>
+                    <textarea id="textContent" name="textContent" rows="10" cols="100"
+                        placeholder="Cole o conteúdo aqui..."></textarea>
+                    <br><br>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="rodape">
+        <p>Desenvolvido por Camila Lopes.</p>
+    </footer>
+</body>
+
+</html>
