@@ -23,36 +23,7 @@ def home():
 def contact():
     return render_template("contact.html")
 
-@app.route("/upload", methods=["POST"])
-def upload_file():
-    conteudo_texto = request.form.get("textContent", "").strip()
-    file = request.files.get("file")
-
-    email_conteudo = ""
-
-    if conteudo_texto:
-        email_conteudo = conteudo_texto
-        tipo_de_arquivo = "caixa de texto"
-    elif file:
-        filename = file.filename
-        filepath = os.path.join(UPLOAD_FOLDER, filename)
-        file.save(filepath)
-
-        if filename.endswith(".txt"):
-            tipo_de_arquivo = ".txt"
-            with open(filepath, "r", encoding="utf-8") as f:
-                email_conteudo = f.read()
-
-        elif filename.endswith(".pdf"):
-            tipo_de_arquivo = ".pdf"
-            with open(filepath, "rb") as f:
-                reader = PyPDF2.PdfReader(f)
-                for page in reader.pages:
-                    email_conteudo += page.extract_text() or ""
-
-    if email_conteudo == "":
-        return jsonify({"erro": "Nenhum conteúdo foi enviado."}), 400
-    
+def prompt_ia(email_conteudo):
     prompt_categoria = """
         De acordo com as categorias de emails abaixo: 
         Produtivo: Emails que requerem uma ação ou resposta específica (ex.: solicitações de suporte técnico, atualização sobre casos em aberto, dúvidas sobre o sistema).
@@ -84,10 +55,46 @@ def upload_file():
         if categoria == "Improdutivo":
             prompt_resposta += """ 
             Responda com uma mensagem automatica de acordo com o assunto do email """
-    
-        resposta_sugerida = model.generate_content(prompt_resposta).text.strip()     
+        
+        resposta_sugerida = model.generate_content(prompt_resposta).text.strip()  
+        return categoria, resposta_sugerida
     except Exception as e:
         print(f"Erro ao chamar a Gemini API: {e}")
+        return None, None
+
+@app.route("/upload", methods=["POST"])
+def upload_file():
+    conteudo_texto = request.form.get("textContent", "").strip()
+    file = request.files.get("file")
+
+    email_conteudo = ""
+
+    if conteudo_texto:
+        email_conteudo = conteudo_texto
+        tipo_de_arquivo = "caixa de texto"
+    elif file:
+        filename = file.filename
+        filepath = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(filepath)
+
+        if filename.endswith(".txt"):
+            tipo_de_arquivo = ".txt"
+            with open(filepath, "r", encoding="utf-8") as f:
+                email_conteudo = f.read()
+
+        elif filename.endswith(".pdf"):
+            tipo_de_arquivo = ".pdf"
+            with open(filepath, "rb") as f:
+                reader = PyPDF2.PdfReader(f)
+                for page in reader.pages:
+                    email_conteudo += page.extract_text() or ""
+
+    if email_conteudo == "":
+        return jsonify({"erro": "Nenhum conteúdo foi enviado."}), 400
+    
+    categoria, resposta_sugerida = prompt_ia(email_conteudo)
+
+    if categoria == None and resposta_sugerida == None:
         return jsonify({"erro": "Erro ao chamar a Gemini API"}), 400
 
     return jsonify({
