@@ -1,0 +1,18 @@
+Assunto: Problema de acesso ao sistema de gestão de projetos
+Para: resposta_ti@empresatm.com.br
+
+Prezados,
+Gostaria de relatar um problema que estou enfrentando ao tentar acessar o sistema de gestão de projetos. Desde as 14h de hoje, a página inicial exibe uma mensagem de erro "Falha na autenticação" após eu inserir minhas credenciais.
+Já tentei os seguintes procedimentos sem sucesso:
+
+    Limpar o cache do navegador (Chrome).
+    Reiniciar o computador.
+    Tentar o acesso por meio de outro navegador (Firefox).
+
+Minha equipe precisa acessar o sistema com urgência para atualizar as tarefas do projeto "Lançamento de Produto X", que tem um prazo apertado.
+Por favor, poderiam verificar o que está acontecendo e nos informar quando o acesso será restabelecido? Se necessário, estou disponível para fornecer mais detalhes.
+
+Atenciosamente,
+Joana silva
+joana.silva@empresa.com.br
+Suporte
