@@ -17,10 +17,10 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
             resultadoDiv.innerHTML = `
                 <br>
                 <h3 class="apresentacao__conteudo__links__subtitulo">O email tem a categoria:</h3>
-                <p>CATEGORIA INFORMADA PELA IA</p>
+                <p>${data.categoria}</p>
                 <br>
                 <h3 class="apresentacao__conteudo__links__subtitulo">Resposta automática sugerida para esse email:</h3>
-                <p>RESPOSTA DADA PELA IA</p>
+                <pre>${data.respostaSugerida}</pre>
                 <br>
                 <h3 class="apresentacao__conteudo__links__subtitulo">Mensagem:</h3>
                 <p>${data.mensagem}</p>
