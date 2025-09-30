@@ -21,12 +21,6 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
                 <br>
                 <h3 class="apresentacao__conteudo__links__subtitulo">Resposta automática sugerida para esse email:</h3>
                 <pre>${data.respostaSugerida}</pre>
-                <br>
-                <h3 class="apresentacao__conteudo__links__subtitulo">Mensagem:</h3>
-                <p>${data.mensagem}</p>
-                <br>
-                <h3 class="apresentacao__conteudo__links__subtitulo">Tipo de arquivo:</h3>
-                <p>${data.tipoDeArquivo}</p>
             `;
         }
     })

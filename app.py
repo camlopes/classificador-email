@@ -93,7 +93,6 @@ def upload_file():
         return jsonify({"erro": "Nenhum conteúdo foi enviado."}), 400
     
     categoria, resposta_sugerida = prompt_ia(email_conteudo)
-
     if categoria == None and resposta_sugerida == None:
         return jsonify({"erro": "Erro ao chamar a Gemini API"}), 400
 
