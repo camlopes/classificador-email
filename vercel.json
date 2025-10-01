@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -15,5 +12,5 @@
       "dest": "/app.py"
     }
   ],
-  "installCommand": "pip install -r requirements.txt && python -c \"import nltk; nltk.download('stopwords'); nltk.download('punkt')\""
+  "installCommand": "pip install -r requirements.txt && python -c \"import nltk; nltk.download('stopwords'); nltk.download('rslp')\""
 }
