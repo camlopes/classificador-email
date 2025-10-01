@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, jsonify
 import PyPDF2
 import google.generativeai as genai
 import os
-import spacy
+import Stemmer
 
 app = Flask(__name__)
 
@@ -23,9 +23,16 @@ def contact():
     return render_template("contact.html")
 
 def pre_processamento_email(email_conteudo):
-    nlp = spacy.load("pt_core_news_sm")
-    doc = nlp(email_conteudo.lower())
-    pre_processado_email = [token.lemma_ for token in doc if token.is_alpha and not token.is_stop]
+    email_conteudo_minusculas = email_conteudo.lower()
+    
+    email_tokens = email_conteudo_minusculas.split()
+    
+    stop_words = {"a", "o", "e", "de", "do", "da", "em", "um", "uma", "para"}
+    email_tokens_sem_stopwords = [t for t in email_tokens if t.isalpha() and t not in stop_words]
+    
+    stemmer = Stemmer.Stemmer("portuguese")
+    pre_processado_email = [stemmer.stemWord(t) for t in email_tokens_sem_stopwords]
+
     return " ".join(pre_processado_email)
 
 def prompt_ia(email_pre_processado, email_original):
