@@ -70,6 +70,7 @@ Categorias de Classificação:
   `pip install -r requirements.txt`
 
 **2. Hospedagem na Nuvem:**
+- Link para acessar o projeto: [Classificador de email](https://classificador-email-amxv4jglb-camlopes-projects.vercel.app/)
 <br>
 
 Após acessar o projeto clique no botão "Procurar..." na página principal da aplicação e utilize os arquivos .txt e .pdf localizados na pasta [`samples/`](https://github.com/camlopes/classificador-email/tree/master/samples) para enviar exemplos de emails que serão classificados e respondidos pela IA. 
