@@ -9,7 +9,7 @@ from nltk.tokenize import word_tokenize
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = "/tmp/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 api_key = os.environ.get("GEMINI_API_KEY")
