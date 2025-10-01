@@ -2,15 +2,12 @@ from flask import Flask, request, render_template, jsonify
 import PyPDF2
 import google.generativeai as genai
 import os
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem import RSLPStemmer
+import spacy
 
 app = Flask(__name__)
 
 UPLOAD_FOLDER = "/tmp/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-nltk.data.path.append(os.path.join(os.path.dirname(__file__), "nltk_data"))
 
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
@@ -26,16 +23,9 @@ def contact():
     return render_template("contact.html")
 
 def pre_processamento_email(email_conteudo):
-    email_conteudo_minusculas = email_conteudo.lower()
-    
-    email_tokens = email_conteudo_minusculas.split()
-    
-    stop_words = set(stopwords.words("portuguese"))
-    email_tokens_sem_stopwords = [t for t in email_tokens if t.isalpha() and t not in stop_words]
-    
-    stemmer = RSLPStemmer()
-    pre_processado_email = [stemmer.stem(t) for t in email_tokens_sem_stopwords]
-
+    nlp = spacy.load("pt_core_news_sm")
+    doc = nlp(email_conteudo.lower())
+    pre_processado_email = [token.lemma_ for token in doc if token.is_alpha and not token.is_stop]
     return " ".join(pre_processado_email)
 
 def prompt_ia(email_pre_processado, email_original):
