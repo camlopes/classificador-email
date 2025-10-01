@@ -5,7 +5,6 @@ import os
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
-from nltk.tokenize import word_tokenize
 
 app = Flask(__name__)
 
@@ -28,7 +27,7 @@ def contact():
 def pre_processamento_email(email_conteudo):
     email_conteudo_minusculas = email_conteudo.lower()
     
-    email_tokens = word_tokenize(email_conteudo_minusculas, language='portuguese')
+    email_tokens = email_conteudo_minusculas.split()
     
     stop_words = set(stopwords.words("portuguese"))
     email_tokens_sem_stopwords = [t for t in email_tokens if t.isalpha() and t not in stop_words]
