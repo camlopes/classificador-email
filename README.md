@@ -54,7 +54,8 @@ Categorias de Classificação:
 - Flask
 - Google Generative AI
 - PyPDF2
-- NLTK (Natural Language Toolkit)
+- PyStemmer (Stemming)
+- Vercel
 - HTML
 - CSS
 - Flex-box
@@ -62,7 +63,7 @@ Categorias de Classificação:
 
 <h2> 📁 Acesso ao projeto </h2>
 
-**1. Para acessar o projeto localmente faça:**
+**1. Para acessar o projeto localmente:**
 - Instale o Python: Baixe e instale o interpretador do Python a partir do site oficial, python.org.
 - Crie e ative o ambiente virtual: Use o interpretador do Python já instalado para criar um ambiente isolado para o projeto usando: <br>
   `python -m venv venv`
@@ -71,6 +72,5 @@ Categorias de Classificação:
 
 **2. Hospedagem na Nuvem:**
 - Link para acessar o projeto: [Classificador de email](https://classificador-email-amxv4jglb-camlopes-projects.vercel.app/)
-<br>
 
 Após acessar o projeto clique no botão "Procurar..." na página principal da aplicação e utilize os arquivos .txt e .pdf localizados na pasta [`samples/`](https://github.com/camlopes/classificador-email/tree/master/samples) para enviar exemplos de emails que serão classificados e respondidos pela IA. 
