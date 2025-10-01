@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = "/tmp/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+nltk.data.path.append(os.path.join(os.path.dirname(__file__), "nltk_data"))
 
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
